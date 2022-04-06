@@ -1,10 +1,10 @@
 
-import HOC from "./component-basic/hocTest";
+import HooksDemo from "./component-basic/hooks";
 function App() {
 
   return (
     <div className="App">
-      <HOC />
+      <HooksDemo />
     </div>
   );
 }
