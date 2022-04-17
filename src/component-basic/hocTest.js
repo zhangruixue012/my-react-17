@@ -4,39 +4,40 @@ import { RedoOutlined } from '@ant-design/icons';
 /**
  * 1. 强化 props
  */
-// function classHOC(WrapComponent){  // 该组件为有状态组件
-//     return class Index extends Component{
-//         state={
-//             name:'alien'
-//         }
-//         componentDidMount(){
-//             console.log('HOC')
-//         }
-//         render(){
-//             return <WrapComponent { ...this.props }  { ...this.state } />
-//         }
-//     }
-// }
-//
-// function functionHoc(WrapComponent){   // 改组件为无状态组件
-//     return function Index(props){
-//         const [ state , setState ] = useState({ name :'baby'  })
-//         return  <WrapComponent { ...props }  { ...state }   />
-//     }
-// }
-//
-//
-// function Index(props){
-//     const { name } = props
-//     useEffect(()=>{
-//         console.log( 'index' )
-//     },[])
-//     return <div>
-//         hello,world , my name is { name }
-//     </div>
-// }
-//
-// export default functionHoc(Index)
+function classHOC(WrapComponent){  // 该组件为有状态组件
+    return class Index extends Component{
+        state={
+            name:'alien'
+        }
+        componentDidMount(){
+            console.log('HOC')
+        }
+        render(){
+            return <WrapComponent {...this.state} {...this.props}/>
+        }
+    }
+}
+
+function functionHoc(WrapComponent){   // 改组件为无状态组件
+    return function Index(props){
+        const [ state , setState ] = useState({ name :'baby'  })
+        return  <WrapComponent { ...props }  { ...state }   />
+    }
+}
+
+
+function Index11(props){
+    console.log('props:', props);
+    const { name } = props
+    useEffect(()=>{
+        console.log( 'index' )
+    },[])
+    return <div>
+        hello,world , my name is { name }
+    </div>
+}
+
+export default classHOC(Index11)
 
 /**
  * 2. 抽离 state,控制更新
@@ -64,7 +65,8 @@ import { RedoOutlined } from '@ant-design/icons';
 //     const { name ,changeName } = props
 //     return <div>
 //         <div> hello,world , my name is { name }</div>
-//         改变name <input onChange={ (e)=> setValue(e.target.value)  }  />
+//         改变name
+//         <input onChange={ (e)=> setValue(e.target.value)  }  />
 //         <button onClick={ ()=> changeName(value) }>确定</button>
 //     </div>
 // }
@@ -89,6 +91,7 @@ import { RedoOutlined } from '@ant-design/icons';
 //             const {  visible } = this.state
 //             return <div className="box">
 //                 <button onClick={ this.setVisible.bind(this) }> 挂载组件 </button>
+//
 //                 { visible ? <WrapComponent { ...this.props } setVisible={ this.setVisible.bind(this) }/>  :
 //                     <div className="icon" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><RedoOutlined /></div> }
 //             </div>
@@ -198,34 +201,34 @@ import { RedoOutlined } from '@ant-design/icons';
 /**
  * 6. 节流渲染: 节流原理
  */
-function HOC (Component){
-    return function RenderWrapComponent(props){
-        const { num } = props
-        const RenderElement = useMemo(() =>  <Component {...props}  /> ,[ num ])
-        return RenderElement
-    }
-}
-
-class Index extends React.Component {
-    render(){
-        console.log(`当前组件是否渲染`,this.props)
-        return <div>hello,world, my name is alien </div>
-    }
-}
-const IndexHoc = HOC(Index)
-
-export default ()=> {
-    const [ num ,setNumber ] = useState(0)
-    const [ num1 ,setNumber1 ] = useState(0)
-    const [ num2 ,setNumber2 ] = useState(0)
-    return <div>
-        <IndexHoc  num={num} num1={num1} num2={num2}/>
-
-        <button onClick={() => setNumber(num + 1) } >num++</button>
-        <button onClick={() => setNumber1(num1 + 1) } >num1++</button>
-        <button onClick={() => setNumber2(num2 + 1) } >num2++</button>
-    </div>
-}
+// function HOC (Component){
+//     return function RenderWrapComponent(props){
+//         const { num } = props
+//         const RenderElement = useMemo(() =>  <Component {...props}  /> ,[ num ])
+//         return RenderElement
+//     }
+// }
+//
+// class Index extends React.Component {
+//     render(){
+//         console.log(`当前组件是否渲染`,this.props)
+//         return <div>hello,world, my name is alien </div>
+//     }
+// }
+// const IndexHoc = HOC(Index)
+//
+// export default ()=> {
+//     const [ num ,setNumber ] = useState(0)
+//     const [ num1 ,setNumber1 ] = useState(0)
+//     const [ num2 ,setNumber2 ] = useState(0)
+//     return <div>
+//         <IndexHoc num={num} num1={num1} num2={num2}/>
+//
+//         <button onClick={() => setNumber(num + 1)}>num++</button>
+//         <button onClick={() => setNumber1(num1 + 1)}>num1++</button>
+//         <button onClick={() => setNumber2(num2 + 1)}>num2++</button>
+//     </div>
+// }
 
 
 

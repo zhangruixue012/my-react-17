@@ -1,12 +1,23 @@
+import React from 'react';
+import HocRefs from './component-basic/hoc-refs';
 
-import HooksDemo from "./component-basic/hooks";
-function App() {
+export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+        this.forWardRef = React.createRef()
+        // ↑5
+    }
 
-  return (
-    <div className="App">
-      <HooksDemo />
-    </div>
-  );
+    componentDidMount() {
+        console.log(this.forWardRef)
+    }
+
+    render() {
+        return (
+            <>
+                <HocRefs ref={this.forWardRef} />
+            </>
+        )
+    }
 }
-
-export default App;
