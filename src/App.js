@@ -1,5 +1,8 @@
 import React from 'react';
-import HocRefs from './component-basic/hoc-refs';
+// import HocRefs from './component-basic/hoc-refs';
+import Demo from "./component-basic/hooks";
+import Portals from './component-basic/portals'
+import './App.css'
 
 export default class App extends React.Component {
     constructor(props) {
@@ -16,7 +19,8 @@ export default class App extends React.Component {
     render() {
         return (
             <>
-                <HocRefs ref={this.forWardRef} />
+                <Portals></Portals>
+                <div id='modal-root'></div>
             </>
         )
     }

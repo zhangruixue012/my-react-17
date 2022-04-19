@@ -186,47 +186,50 @@ import React, { useState, useRef, useEffect, useLayoutEffect, useReducer, useMem
  * useReducer
  */
 
-// function Demo(){
-//
-//     const MyChildren = ({ dispatch, State }) => {
-//         const { number } = State;
-//
-//         const dispatchChildValue = () => {
-//             dispatch({ name:'reset' ,payload: 100 })
-//         }
-//
-//         return(<div style={{ width: '100px', height: '100px', border: '2px solid #f00', marginTop: '20px' }}>
-//             子组件:{number}
-//             <button onClick={dispatchChildValue}>子组件中 dispatch</button>
-//         </div>)
-//     }
-//
-//     /* number为更新后的state值,  dispatchNumber 为当前的派发函数 */
-//     const [ number , dispatchNumber ] = useReducer((state,action)=>{
-//         const { payload , name  } = action
-//         /* return的值为新的state */
-//         switch(name){
-//             case 'add':
-//                 return state + 1
-//             case 'sub':
-//                 return state - 1
-//             case 'reset':
-//                 return payload
-//         }
-//         return state
-//     },0);
-//
-//     return <div>
-//         当前值：{ number }
-//         { /* 派发更新 */ }
-//         <button onClick={()=>dispatchNumber({ name:'add' })} >增加</button>
-//         <button onClick={()=>dispatchNumber({ name:'sub' })} >减少</button>
-//         <button onClick={()=>dispatchNumber({ name:'reset' ,payload:666 })} >赋值</button>
-//
-//         { /* 把dispatch 和 state 传递给子组件  */ }
-//         <MyChildren  dispatch={dispatchNumber} State={{ number }} />
-//     </div>
-// }
+function Demo(){
+
+    const MyChildren = ({ dispatch, State }) => {
+        const { number } = State;
+
+        const dispatchChildValue = () => {
+            dispatch({ name:'reset' ,payload: 100 })
+        }
+
+        return(<div style={{ width: '100px', height: '100px', border: '2px solid #f00', marginTop: '20px' }}>
+            子组件:{number}
+            <button onClick={dispatchChildValue}>子组件中 dispatch</button>
+        </div>)
+    }
+
+    /* number为更新后的state值,  dispatchNumber 为当前的派发函数 */
+    const [ number , dispatchNumber ] = useReducer((state, action)=>{
+        const { payload , name  } = action
+        /* return的值为新的state */
+        switch(name){
+            case 'add':
+                return state + 1
+            case 'sub':
+                return state - 1
+            case 'reset':
+                return payload
+        }
+        return state
+    },0);
+
+    return <div>
+        当前值：{ number }
+        { /* 派发更新 */ }
+        <button onClick={()=>dispatchNumber({ name:'add' })} >增加</button>
+        <button onClick={()=>dispatchNumber({ name:'sub' })} >减少</button>
+        <button onClick={()=>dispatchNumber({ name:'reset' ,payload:666 })} >赋值</button>
+
+        { /* 把dispatch 和 state 传递给子组件  */ }
+        <MyChildren  dispatch={dispatchNumber} State={{ number }} />
+    </div>
+
+
+
+}
 
 /**
  * useMemo
@@ -302,51 +305,51 @@ import React, { useState, useRef, useEffect, useLayoutEffect, useReducer, useMem
  * UseState 与 UseReducer
  */
 
-function Demo() {
-    const preferDarkQuery = '(prefers-color-scheme: dark)';
-
-    const [mode, setMode] = React.useState(() => window.localStorage.getItem('colorMode') || (window.matchMedia(preferDarkQuery).matches ? 'dark' : 'light'),)
-
-    React.useEffect(() => {
-        const mediaQuery = window.matchMedia(preferDarkQuery)
-        const handleChange = () => setMode(mediaQuery.matches ? 'dark' : 'light')
-        mediaQuery.addListener(handleChange)
-        return () => mediaQuery.removeListener(handleChange)
-    }, [])
-
-    React.useEffect(() => {
-        window.localStorage.setItem('colorMode', mode)
-    }, [mode]);
-
-    return [mode, setMode]
-}
-
-
-function useDarkMode() {
-    const preferDarkQuery = '(prefers-color-scheme: dark)'
-
-    const [mode, setMode] = React.useReducer(
-        (prevMode, nextMode) =>
-            typeof nextMode === 'function' ? nextMode(prevMode) : nextMode,
-        'light',
-        () =>
-            window.localStorage.getItem('colorMode') ||
-            (window.matchMedia(preferDarkQuery).matches ? 'dark' : 'light'),
-    );
-
-    React.useEffect(() => {
-        const mediaQuery = window.matchMedia(preferDarkQuery)
-        const handleChange = () => setMode(mediaQuery.matches ? 'dark' : 'light')
-        mediaQuery.addListener(handleChange)
-        return () => mediaQuery.removeListener(handleChange)
-    }, [])
-
-
-    React.useEffect(() => {
-        window.localStorage.setItem('colorMode', mode)
-    }, [mode])
-
-    return [mode, setMode]
-}
+// function Demo() {
+//     const preferDarkQuery = '(prefers-color-scheme: dark)';
+//
+//     const [mode, setMode] = React.useState(() => window.localStorage.getItem('colorMode') || (window.matchMedia(preferDarkQuery).matches ? 'dark' : 'light'),)
+//
+//     React.useEffect(() => {
+//         const mediaQuery = window.matchMedia(preferDarkQuery)
+//         const handleChange = () => setMode(mediaQuery.matches ? 'dark' : 'light')
+//         mediaQuery.addListener(handleChange)
+//         return () => mediaQuery.removeListener(handleChange)
+//     }, [])
+//
+//     React.useEffect(() => {
+//         window.localStorage.setItem('colorMode', mode)
+//     }, [mode]);
+//
+//     return [mode, setMode]
+// }
+//
+//
+// function useDarkMode() {
+//     const preferDarkQuery = '(prefers-color-scheme: dark)'
+//
+//     const [mode, setMode] = React.useReducer(
+//         (prevMode, nextMode) =>
+//             typeof nextMode === 'function' ? nextMode(prevMode) : nextMode,
+//         'light',
+//         () =>
+//             window.localStorage.getItem('colorMode') ||
+//             (window.matchMedia(preferDarkQuery).matches ? 'dark' : 'light'),
+//     );
+//
+//     React.useEffect(() => {
+//         const mediaQuery = window.matchMedia(preferDarkQuery)
+//         const handleChange = () => setMode(mediaQuery.matches ? 'dark' : 'light')
+//         mediaQuery.addListener(handleChange)
+//         return () => mediaQuery.removeListener(handleChange)
+//     }, [])
+//
+//
+//     React.useEffect(() => {
+//         window.localStorage.setItem('colorMode', mode)
+//     }, [mode])
+//
+//     return [mode, setMode]
+// }
 
 export default Demo;
