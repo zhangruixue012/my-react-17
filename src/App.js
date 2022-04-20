@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter, Link, Routes, Route} from 'react-router-dom';
 import RouterDetail from './pages/router-detail'
 import RouterList from './pages/router-list'
-import Index from "./pages/flexLayout";
+import FlexLayout from "./pages/flexLayout";
+import Transition from "./pages/transition";
 import './App.css';
 
 
@@ -12,8 +13,8 @@ const menuList = [
         path: '/flex-layout'
     },
     {
-        name: '列表',
-        path: '/list'
+        name: 'transition动画',
+        path: '/transition'
     },
     {
         name: '详情',
@@ -39,9 +40,9 @@ function App() {
                 {/*</Switch>*/}
 
                 <Routes>
-                    <Route path='/' element={<Index />}></Route>
-                    <Route path='/flex-layout' element={<Index />}></Route>
-                    <Route path='/list' element={<RouterList />} ></Route>
+                    <Route path='/' element={<Transition />}></Route>
+                    <Route path='/flex-layout' element={<FlexLayout />}></Route>
+                    <Route path='/transition' element={<Transition />} ></Route>
                     <Route path='/detail' element={<RouterDetail />} ></Route>
                 </Routes>
             </BrowserRouter>

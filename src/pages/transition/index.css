@@ -1,0 +1,105 @@
+.demo-content {
+    display: flex;
+}
+
+/*
+ transition
+ */
+
+* { padding: 0;margin: 0;box-sizing: border-box;}
+
+.t-demo { width: 600px;margin: 20px; outline: 2px dashed; }
+
+.t-demo pre { transition: 2s;position: relative;left: 0;width: 100px;height: 100px;margin: 20px 0;
+    border-radius: 50%;font-size: 18px;text-align: center;line-height: 100px;background: #82B600;color:#fff;  }
+
+.t-demo:hover pre { left: 500px;color: red;}
+
+/*.t-demo pre:nth-child(1) { transition-property: none;transition-duration: 0s;}*/
+
+/*.t-demo pre:nth-child(2) { transition-property: all; transition-duration: 1s;}*/
+
+/*.t-demo pre:nth-child(3) { transition-property: left; transition-duration: 2s;}*/
+
+/*.t-demo pre:nth-child(4) { transition-property: left, color;line-height: 30px;padding: 20px 0; transition-duration: 3s;}*/
+
+
+
+.t-demo pre:nth-child(1) { transition-timing-function: ease;}
+
+.t-demo pre:nth-child(2) { transition-timing-function: linear;}
+
+.t-demo pre:nth-child(3) { transition-timing-function: ease-out; }
+
+.t-demo pre:nth-child(4) { transition-timing-function: cubic-bezier(0.8,0,0,0.8);}
+
+.t-demo pre:nth-child(5) { transition-timing-function: steps(3,start);}
+
+
+/**
+transform
+ */
+
+
+.transform-demo { width: 300px;margin: 20px; outline: 2px dashed; }
+
+.transform-chunk {
+    padding: 10px 20px;
+    background-color: #FF5A5F;
+    margin-bottom: 10px;
+    /*-webkit-transition:all 1s ease-in-out;*/
+    /*-moz-transition:all 1s ease-in-out*/
+}
+
+.transform-chunk {
+    -webkit-transition:all 1s ease-in-out;
+    -moz-transition:all 1s ease-in-out
+}
+
+.transform-chunk1:hover{
+    -webkit-transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
+}
+
+.transform-chunk2:hover{
+    -webkit-transform:skew(-20deg);
+    -moz-transform:skew(-20deg);
+}
+
+.transform-chunk3:hover{
+    -webkit-transform:scale(0.5);
+    -moz-transform:scale(0.5);
+}
+
+.transform-chunk4:hover {
+    -webkit-transform:scale(0.5);
+    -moz-transform:scale(0.5);
+    transition: transform 3s steps(3,start);
+}
+
+/**
+animation
+ */
+
+
+.animation-demo { width: 600px;margin: 20px; outline: 2px dashed; display: flex;justify-content: center; align-items: center}
+
+.load-border {
+    width: 120px;
+    height: 120px;
+    background: url(./loading.jpeg) no-repeat center center;
+    -webkit-animation: gif 1.4s infinite linear;
+    animation: gif 1.4s infinite linear;
+}
+@keyframes gif {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+
