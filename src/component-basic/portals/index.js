@@ -1,6 +1,6 @@
 // import ReactDOM from 'react-dom';
 // import React from 'react';
-// import './index.css';
+// import './index.js.css';
 //
 // const modalRoot = document.getElementById('modal-root');
 //

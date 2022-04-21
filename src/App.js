@@ -4,6 +4,9 @@ import RouterDetail from './pages/router-detail'
 import RouterList from './pages/router-list'
 import FlexLayout from "./pages/flexLayout";
 import Transition from "./pages/transition";
+import EventLoop from "./pages/eventLoop";
+import ConcurrencyControl from "./pages/concurrency-control";
+import Debounce from './pages/debounce-throttle'
 import './App.css';
 
 
@@ -13,12 +16,20 @@ const menuList = [
         path: '/flex-layout'
     },
     {
-        name: 'transition动画',
+        name: '动画',
         path: '/transition'
     },
     {
-        name: '详情',
-        path: '/detail'
+        name: 'Event Loop',
+        path: '/event-loop'
+    },
+    {
+        name: 'js并发控制',
+        path: '/concurrency-control'
+    },
+    {
+        name: '防抖和节流',
+        path: '/debounce-throttle'
     },
 ];
 
@@ -33,17 +44,19 @@ function App() {
                     </Link>)}
                 </div>
                 {/*<Switch>*/}
-                {/*    <Route path={'/index'} component={RouterIndex} ></Route>*/}
+                {/*    <Route path={'/index.js'} component={RouterIndex} ></Route>*/}
                 {/*    <Route path={'/list'} component={RouterList} ></Route>*/}
                 {/*    <Route path={'/detail'} component={RouterDetail} ></Route>*/}
-                {/*    <Navigate from='/*' to='/index' />*/}
+                {/*    <Navigate from='/*' to='/index.js' />*/}
                 {/*</Switch>*/}
 
                 <Routes>
                     <Route path='/' element={<Transition />}></Route>
                     <Route path='/flex-layout' element={<FlexLayout />}></Route>
                     <Route path='/transition' element={<Transition />} ></Route>
-                    <Route path='/detail' element={<RouterDetail />} ></Route>
+                    <Route path='/event-loop' element={<EventLoop />} ></Route>
+                    <Route path='/concurrency-control' element={<ConcurrencyControl />}></Route>
+                    <Route path='/debounce-throttle' element={<Debounce />}></Route>
                 </Routes>
             </BrowserRouter>
 
