@@ -7,6 +7,7 @@ import Transition from "./pages/transition";
 import EventLoop from "./pages/eventLoop";
 import ConcurrencyControl from "./pages/concurrency-control";
 import Debounce from './pages/debounce-throttle'
+import RequestAnimationFrame from './pages/requestAnimationFrame'
 import './App.css';
 
 
@@ -30,6 +31,10 @@ const menuList = [
     {
         name: '防抖和节流',
         path: '/debounce-throttle'
+    },
+    {
+        name: 'requestAnimationFrame',
+        path: '/requestAnimationFrame'
     },
 ];
 
@@ -57,6 +62,7 @@ function App() {
                     <Route path='/event-loop' element={<EventLoop />} ></Route>
                     <Route path='/concurrency-control' element={<ConcurrencyControl />}></Route>
                     <Route path='/debounce-throttle' element={<Debounce />}></Route>
+                    <Route path='/requestAnimationFrame' element={<RequestAnimationFrame />}></Route>
                 </Routes>
             </BrowserRouter>
 
