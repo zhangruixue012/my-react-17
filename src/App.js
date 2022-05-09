@@ -8,6 +8,8 @@ import EventLoop from "./pages/eventLoop";
 import ConcurrencyControl from "./pages/concurrency-control";
 import Debounce from './pages/debounce-throttle'
 import RequestAnimationFrame from './pages/requestAnimationFrame'
+import GridLayout from "./pages/grid-layout";
+import WrittenTest from './pages/written-test';
 import './App.css';
 
 
@@ -36,6 +38,14 @@ const menuList = [
         name: 'requestAnimationFrame',
         path: '/requestAnimationFrame'
     },
+    {
+        name: 'grid布局',
+        path: '/grid-layout'
+    },
+    {
+        name: 'written-test',
+        path: '/written-test'
+    },
 ];
 
 function App() {
@@ -63,6 +73,8 @@ function App() {
                     <Route path='/concurrency-control' element={<ConcurrencyControl />}></Route>
                     <Route path='/debounce-throttle' element={<Debounce />}></Route>
                     <Route path='/requestAnimationFrame' element={<RequestAnimationFrame />}></Route>
+                    <Route path='/grid-layout' element={<GridLayout />}></Route>
+                    <Route path='/written-test' element={<WrittenTest />}></Route>
                 </Routes>
             </BrowserRouter>
 

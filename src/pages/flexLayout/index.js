@@ -1,5 +1,5 @@
 
-import "./index.css";
+import "./index.module.css";
 
 function FlexLayout() {
     return(<div className="parent">
