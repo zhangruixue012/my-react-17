@@ -10,6 +10,7 @@ import Debounce from './pages/debounce-throttle'
 import RequestAnimationFrame from './pages/requestAnimationFrame'
 import GridLayout from "./pages/grid-layout";
 import WrittenTest from './pages/written-test';
+import BfcDemo from './pages/bfc-demo';
 import './App.css';
 
 
@@ -46,6 +47,10 @@ const menuList = [
         name: 'written-test',
         path: '/written-test'
     },
+    {
+        name: 'BFC(块级格式上下文)',
+        path: '/bfc-demo'
+    },
 ];
 
 function App() {
@@ -75,6 +80,7 @@ function App() {
                     <Route path='/requestAnimationFrame' element={<RequestAnimationFrame />}></Route>
                     <Route path='/grid-layout' element={<GridLayout />}></Route>
                     <Route path='/written-test' element={<WrittenTest />}></Route>
+                    <Route path='/bfc-demo' element={<BfcDemo />}></Route>
                 </Routes>
             </BrowserRouter>
 
